@@ -1,0 +1,12 @@
+package {{.Package}}
+
+
+public enum {{.EnumName}} {
+
+    {{ with .Entries }}
+        {{ range . }}
+        {{.Id}}({{.Repr}}){{ if .Done }};{{ else }},{{ end }}
+        {{ end }}
+    {{ end }}
+
+}
