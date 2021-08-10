@@ -19,12 +19,12 @@ type EnumInfo struct {
 }
 
 func GenerateEnum(info EnumInfo) error {
-	f, err := os.OpenFile(fmt.Sprintf("%s.lang", info.EnumName), os.O_WRONLY|os.O_CREATE, 0600)
+	f, err := os.OpenFile(fmt.Sprintf("%s.java", info.EnumName), os.O_WRONLY|os.O_CREATE, 0600)
 	defer f.Close()
 	if err != nil {
 		return err
 	}
-	temp := template.Must(template.New("enum_java.lang.tmpl").ParseFiles("pkg/codegen/enum_java.lang.tmpl"))
+	temp := template.Must(template.New("enum_java.java.tmpl").ParseFiles("pkg/codegen/enum_java.java.tmpl"))
 	err = temp.Execute(f, info)
 	return err
 }

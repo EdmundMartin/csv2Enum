@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"github.com/EdmundMartin/csv2Enum/pkg/codegen"
 )
 
@@ -11,7 +12,8 @@ func main() {
 	flag.StringVar(&enumName, "enumName", "", "Name of enum")
 	flag.StringVar(&packageName, "package", "", "name of package")
 
-	codegen.ReadCsvFile("example.csv")
+	result, _ := codegen.ReadCsvFile("example.csv")
+	fmt.Println(result.JavaTypes)
 
 	codegen.GenerateEnum(codegen.EnumInfo{
 		Package:  "com.edmundmartin.example",
